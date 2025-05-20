@@ -13,7 +13,7 @@ type TechType = {
     title: string
 }
 
-type StudentType = {
+export type StudentType = {
      id: number
      name: string
      age: number
@@ -21,7 +21,7 @@ type StudentType = {
      address:AddressType
      technologies: TechType[]
 }
-const student: StudentType = {
+export const student: StudentType = {
     name: "Kirill",
     age: 32,
     isActive: false,
