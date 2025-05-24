@@ -20,6 +20,8 @@ export const ManComponent = ({ title, man, ...props}:PropsType) => {
       {props.car.model}
       {props.food}
     </div>
-   </div>
+   </div> 
   );
-};
+
+};  
+
