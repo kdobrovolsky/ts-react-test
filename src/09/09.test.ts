@@ -1,7 +1,7 @@
 type UserType = {
-  name: string
-  age: number
-  address: {title:string}
+  name: string;
+  age: number;
+  address: { title: string };
 };
 
 function ucreaseAge(user: UserType) {
@@ -13,8 +13,8 @@ test("big test", () => {
     name: "Kirill",
     age: 32,
     address: {
-        title: 'Minsk'
-    }
+      title: "Minsk",
+    },
   };
   ucreaseAge(user);
 
@@ -35,70 +35,55 @@ test("array test", () => {
   ];
   let admins = users;
 
+  admins.push({ name: "Bandygan", age: 10 });
 
-  admins.push({name:'Bandygan', age: 10})
-
-  expect(users[3]).toEqual({name:'Bandygan', age: 10});
-
-
+  expect(users[3]).toEqual({ name: "Bandygan", age: 10 });
 });
 
-
 test("array reference test", () => {
+  let user = {
+    name: "Kirill",
+    age: 32,
+    address: {
+      title: "Minsk",
+    },
+  };
 
-    let user = {
-        name: "Kirill",
-        age: 32,
-        address: {
-            title: 'Minsk'
-        }
-      };
+  let addAdr = user.address;
 
-      let addAdr = user.address
+  let user2: UserType = {
+    name: "Liza",
+    age: 23,
+    address: addAdr,
+  };
 
-      let user2: UserType = {
-        name: 'Liza',
-        age: 23,
-        address: addAdr
-      }
+  user2.address.title = "Mogilev";
 
-      user2.address.title = 'Mogilev'
+  expect(user2.address.title).toBe("Mogilev");
+});
 
-    expect(user2.address.title).toBe('Mogilev');
-  
-  
-  });
+test("reference type array test", () => {
+  let user = {
+    name: "Kirill",
+    age: 32,
+    address: {
+      title: "Minsk",
+    },
+  };
 
-  test("reference type array test", () => {
+  let user2 = {
+    name: "Kirill",
+    age: 32,
+    address: {
+      title: "Minsk",
+    },
+  };
 
-    let user = 
-        {
-             name: "Kirill",
-            age: 32,
-            address: {
-          
-                title: 'Minsk'
-        }}
-   
+  const users = [
+    user,
+    user2,
+    { name: "Katya", age: 18, address: { title: "Minsk" } },
+  ];
 
-   let  user2 = 
-   {
-       name: "Kirill",
-       age: 32,
-       address: {
-           title: 'Minsk'
-   }
-}
-
-    const users = [user,user2,{name: 'Katya', age: 18, address: {title: 'Minsk'}}]
-
-      
-
-     
-
-      
-
-    expect(users[2].name).toBe('Katya');
-  
-  
-  });
+  expect(users[2].name).toBe("Katya");
+});
